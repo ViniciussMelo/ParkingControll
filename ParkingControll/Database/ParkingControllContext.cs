@@ -11,5 +11,7 @@ namespace ParkingControll.Models
         #endregion
 
         public DbSet<Employee> Employee { get; set; }
+        public DbSet<Vehicle> Vehicle { get; set; }
+        public DbSet<Parking> Parking { get; set; }
     }
 }
