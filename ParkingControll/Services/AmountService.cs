@@ -12,7 +12,7 @@
 
             if (totalHours <= 1) return totalPrice;
 
-            return totalPrice + (totalHours * AdditionalPrice);
+            return totalPrice + ((totalHours - 1) * AdditionalPrice);
         }
         #endregion
     }

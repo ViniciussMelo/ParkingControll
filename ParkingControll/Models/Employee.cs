@@ -6,7 +6,12 @@
         public string Email { get; set; }
 
         #region CTOR
-        public Employee(string name, string email)
+        public Employee()
+        {
+
+        }
+
+        public Employee(int id, string name, string email) : base(id)
         {
             Name = name;
             Email = email;

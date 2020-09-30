@@ -5,25 +5,26 @@ namespace ParkingControll.Models
 {
     public class Parking : ClassBase
     {
-        private double _price;
-
         public DateTime InitialDate { get; set; }
         public DateTime FinalDate { get; set; }
         public Vehicle Vehicle { get; set; }
         public Employee Employee { get; set; }
-        
-        public double Price
-        {
-            get { return _price; }
-            set
-            {
-                this._price = Amount();
-            }
-        }
+
+        public double Price { get; private set; }
 
         #region CTOR
-        public Parking()
+        private Parking()
         {
+
+        }
+
+        public Parking(int id, DateTime initialDate, DateTime finalDate, Vehicle vehicle, Employee employee) : base(id)
+        {
+            InitialDate = initialDate;
+            FinalDate = finalDate;
+            Vehicle = vehicle;
+            Employee = employee;
+            Price = Amount();
         }
         #endregion
 
