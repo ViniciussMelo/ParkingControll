@@ -13,7 +13,7 @@ namespace ParkingControll.Models
         public double Price { get; private set; }
 
         #region CTOR
-        private Parking()
+        public Parking()
         {
 
         }

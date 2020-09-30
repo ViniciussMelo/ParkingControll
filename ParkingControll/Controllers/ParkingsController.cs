@@ -45,6 +45,8 @@ namespace ParkingControll.Controllers
         // GET: Parkings/Create
         public IActionResult Create()
         {
+            ViewData["initialDate"] = DateTime.Now.ToString();
+            ViewData["finalDate"] = DateTime.Now.ToString();
             return View();
         }
 

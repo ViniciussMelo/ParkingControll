@@ -2,6 +2,16 @@
 
 @{
     ViewData["Title"] = "Create";
+    DateTime initialDate = DateTime.Parse(ViewData["initialDate"] as string);
+    DateTime finalDate = DateTime.Parse(ViewData["finalDate"] as string);
+
+    bool SetaValor()
+    {
+        TimeSpan totalHours = finalDate.Subtract(initialDate);
+        ViewData["price"] = ParkingControll.Services.AmountService.TotalPrice(totalHours.Hours);
+
+        return true;
+    }
 }
 
 <h2>Create</h2>
@@ -14,17 +24,17 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="InitialDate" class="control-label"></label>
-                <input asp-for="InitialDate" class="form-control" />
+                <input type="datetime" asp-for="InitialDate" class="form-control" name="initialDate" value="@ViewData["initialDate"]" onchange="@SetaValor()"/>
                 <span asp-validation-for="InitialDate" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="FinalDate" class="control-label"></label>
-                <input asp-for="FinalDate" class="form-control" />
+                <input type="datetime" asp-for="FinalDate" class="form-control" name="finalDate" value="@ViewData["finalDate"]" onchange="return @SetaValor()"/>
                 <span asp-validation-for="FinalDate" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Price" class="control-label"></label>
-                <input asp-for="Price" class="form-control" />
+                <input asp-for="Price" class="form-control" name="price" value="@ViewData["price"]" disabled />
                 <span asp-validation-for="Price" class="text-danger"></span>
             </div>
             <div class="form-group">
